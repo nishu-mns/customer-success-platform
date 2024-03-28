@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Phase Milestone</h4>
+    <button type="button" class="close ms-4" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group mb-3">
+        <label>Title</label>
+        <input type="text" class="form-control" [(ngModel)]="phaseMilestone.title" name="title">
+      </div>
+      <div class="form-group mb-3">
+        <label>Start Date</label>
+        <input type="date" class="form-control" [(ngModel)]="phaseMilestone.startDate" name="startDate">
+      </div>
+      <div class="form-group mb-3">
+        <label>End Date</label>
+        <input type="date" class="form-control" [(ngModel)]="phaseMilestone.endDate" name="endDate">
+      </div>
+      <div class="form-group mb-3">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="phaseMilestone.approvalDate" name="approvalDate"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="phaseMilestone.status" name="status"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="phaseMilestone.revisedCompletionDate" name="revisedCompletionDate"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label>Comments</label>
+        <input type="text" class="form-control" [(ngModel)]="phaseMilestone.comments" name="Comments">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel')">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+  </div>

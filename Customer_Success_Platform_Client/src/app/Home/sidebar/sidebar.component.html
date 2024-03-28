@@ -1,0 +1,22 @@
+  <nav id="sidebarMenu" class=" bg-light collapse d-lg-block sidebar collapse">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mt-4">
+        <button class="list-group-item list-group-item-action py-2 ripple active mb-3" aria-current="true" (click)="createProject()">
+          + New Project
+        </button>
+        <a (click)="openProjects()" 
+        class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'Projects'">
+          Projects
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'ProjectManagers'">
+          Project Managers
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'Employees'">
+          Employees
+        </a>
+        <a class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'Settings'">
+          Settings
+        </a>
+      </div>
+    </div>
+  </nav>

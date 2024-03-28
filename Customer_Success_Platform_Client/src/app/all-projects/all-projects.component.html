@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Started On</th>
+        <th>Status</th>
+        <th>Project Manager</th>
+        <th>Members</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of projects; let i = index">
+        <td><a [routerLink]="['/project-details', item.id]">{{ item.name }}</a></td>
+        <td>{{ item.startedOn | date }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.projectManager }}</td>
+        <td>{{ item.members }}</td>
+        <td><button class="btn btn-danger" (click)="deleteProject(projectIds[i])">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  

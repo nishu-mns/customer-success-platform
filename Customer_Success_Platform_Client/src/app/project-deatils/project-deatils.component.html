@@ -1,0 +1,179 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <div class="col-md-10">
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-primary mb-4" id="export-btn" (click)="downloadAsPdf()">Export project
+                            details as pdf</button>
+                        <!-- Bootstrap Nav Tabs for Project Details -->
+                        <ul class="nav nav-tabs" id="projectTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project Budjet</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#auditHistory" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Audit History</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#versionHistory" type="button" role="tab"
+                                    aria-controls="projectDesc" aria-selected="true">Version History</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#scope" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Scope</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectStack" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project Stack (Tech) </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#escalationMatrix" type="button" role="tab"
+                                    aria-controls="projectDesc" aria-selected="true">Escalation Matrix </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#stakeHolder" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Stakeholders</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#riskProfiling" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Risk Profiling</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#phaseMilestone" type="button" role="tab"
+                                    aria-controls="projectDesc" aria-selected="true">Phases/Milestones </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#sprint" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Sprint wise detail </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#detailedTimeline" type="button" role="tab"
+                                    aria-controls="projectDesc" aria-selected="true">Detailed timeline reference
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#approvedTeam" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Approved Team </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectResource" type="button" role="tab"
+                                    aria-controls="projectDesc" aria-selected="true">Project Resources </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#clientFeedback" type="button" role="tab"
+                                    aria-controls="projectDesc" aria-selected="true">Client Feedback </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectUpdate" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project updates </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#meetingMinute" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">MoMs of client meetings </button>
+                            </li>
+
+                        </ul>
+                        <!-- Bootstrap Tab Content -->
+                        <div class="tab-content" id="projectTabsContent" #content>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-project-budget></app-project-budget>
+                            </div>
+                            <div class="tab-pane fade show active" id="auditHistory" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="versionHistory" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-version-history></app-version-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="scope" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-scope></app-scope>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectStack" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <h3>Project Stack (Tech)</h3>
+                                <li>Backend </li>
+                                <li> Frontend  </li>
+                                <li>Mobile App  </li>
+                                <li>Database  </li>
+                                <li>Infrastructure and Services</li>
+
+                            </div>
+                            <div class="tab-pane fade show active" id="escalationMatrix" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-escalation-matrix></app-escalation-matrix>
+                            </div>
+                            <div class="tab-pane fade show active" id="stakeHolder" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-stakeholders></app-stakeholders>
+                            </div>
+                            <div class="tab-pane fade show active" id="riskProfiling" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-risk-profiling></app-risk-profiling>
+                            </div>
+                            <div class="tab-pane fade show active" id="phaseMilestone" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-phase-milestone></app-phase-milestone>
+                            </div>
+                            <div class="tab-pane fade show active" id="sprint" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-sprint></app-sprint>
+                            </div>
+                            <div class="tab-pane fade show active" id="detailedTimeline" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-detailed-timeline></app-detailed-timeline>
+                            </div>
+                            <div class="tab-pane fade show active" id="approvedTeam" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-approved-team></app-approved-team>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectResource" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-project-resources></app-project-resources>
+                            </div>
+                            <div class="tab-pane fade show active" id="clientFeedback" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-client-feedback></app-client-feedback>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectUpdate" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-project-update></app-project-update>
+                            </div>
+                            <div class="tab-pane fade show active" id="meetingMinute" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-meeting-minute></app-meeting-minute>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
