@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -49,6 +49,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.MailKit;
+using Promact.CustomerSuccess.Platform.Services.EmailService;
 
 namespace Promact.CustomerSuccess.Platform;
 
@@ -99,7 +101,9 @@ namespace Promact.CustomerSuccess.Platform;
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpSettingManagementHttpApiModule)
 )]
-public class PlatformModule : AbpModule
+[DependsOn(typeof(AbpEmailingModule))]
+    [DependsOn(typeof(AbpMailKitModule))]
+    public class PlatformModule : AbpModule
 {
     /* Single point to enable/disable multi-tenancy */
     private const bool IsMultiTenant = true;
@@ -152,6 +156,7 @@ public class PlatformModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 
+        context.Services.AddTransient<IEmailService, EmailService>();
         if (hostingEnvironment.IsDevelopment())
         {
 
@@ -171,6 +176,7 @@ public class PlatformModule : AbpModule
         ConfigureCors(context, configuration);
         ConfigureDataProtection(context);
         ConfigureEfCore(context);
+
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
