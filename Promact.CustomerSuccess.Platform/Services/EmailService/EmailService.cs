@@ -3,30 +3,35 @@ using System.Threading.Tasks;
 using Volo.Abp.Emailing;
 using MimeKit;
 using MailKit.Net.Smtp;
+using MimeKit.Text;
+using Promact.CustomerSuccess.Platform.Services.Dtos;
 
 namespace Promact.CustomerSuccess.Platform.Services.EmailService
 {
-    public class EmailService : IEmailService, ITransientDependency
+    public class EmailService : IEmailService
     {
-        public async Task SendEmailAsync(string to, string subject, string body)
+        private readonly IConfiguration _config;
+
+        public EmailService(IConfiguration config)
         {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Nisha Makwana", "nisha.makwana2423@gmail.com"));
-            message.To.Add(new MailboxAddress("", to)); // You can add multiple recipients if needed
-            message.Subject = subject;
-
-            message.Body = new TextPart("plain")
-            {
-                Text = body
-            };
-
-            using (var client = new SmtpClient())
-            {
-                await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                await client.AuthenticateAsync("nisha.makwana2423@gmail.com", "vxattbwliievgkef");
-                await client.SendAsync(message);
-                await client.DisconnectAsync(true);
-            }
+            _config = config;
         }
+        public async Task SendEmailAsync(EmailDto request)
+        {
+            var senderEmail = request.Recipient;
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUsername").Value));
+            email.To.Add(MailboxAddress.Parse(senderEmail));
+            email.Subject = request.Subject;
+            email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
+
+            using var smtp = new SmtpClient();
+            await smtp.ConnectAsync(_config.GetSection("EmailHost").Value, 587, MailKit.Security.SecureSocketOptions.StartTls); //smtp.gmail.com
+            await smtp.AuthenticateAsync(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
+            await smtp.SendAsync(email);
+            await smtp.DisconnectAsync(true);
+        }
+
     }
+
 }

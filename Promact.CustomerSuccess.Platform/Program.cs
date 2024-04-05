@@ -1,4 +1,5 @@
 using Promact.CustomerSuccess.Platform.Data;
+using Promact.CustomerSuccess.Platform.Services.EmailService;
 using Serilog;
 using Serilog.Events;
 using Volo.Abp.Data;
@@ -35,6 +36,7 @@ public class Program
         try
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog();

@@ -156,7 +156,6 @@ namespace Promact.CustomerSuccess.Platform;
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 
-        context.Services.AddTransient<IEmailService, EmailService>();
         if (hostingEnvironment.IsDevelopment())
         {
 
